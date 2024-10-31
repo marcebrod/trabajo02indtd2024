@@ -1,0 +1,22 @@
+---
+title: "trabajo02"
+author: "Magdalena Ceballos Rodríguez"
+date: "2024-10-31"
+output: pdf_document
+---
+
+Crear un proyecto RStudio con un documento R Markdown en el que se resuelva el problema del tema elegido con 
+
+todas las técnicas vistas en clase de decisión multicriterio (AHP al menos con el paquete ahp, Electre, Promethee y ...). 
+
+Además de la presentación y conclusiones obtenidas con los distintos métodos, también se valorará que aparezca
+
+la documentación utilizada así como material gráfico que mejore la comprensión del problema de decisión resuelto.
+
+- La salida generada puede ser: pdf o html.
+
+
+
+```{r pressure, echo=FALSE}
+
+```
