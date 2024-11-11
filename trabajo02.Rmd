@@ -5,18 +5,190 @@ date: "2024-10-31"
 output: pdf_document
 ---
 
-Crear un proyecto RStudio con un documento R Markdown en el que se resuelva el problema del tema elegido con 
+# **Introducción**
 
-todas las técnicas vistas en clase de decisión multicriterio (AHP al menos con el paquete ahp, Electre, Promethee y ...). 
+La toma de decisiones en escenarios complejos donde intervienen múltiples criterios es un desafío común en muchas áreas, desde la gestión de proyectos hasta la selección de inversiones y la planificación estratégica. El análisis de decisión multicriterio (MCDM, por sus siglas en inglés) proporciona un marco robusto para abordar estos problemas, permitiendo evaluar y priorizar alternativas basadas en una variedad de criterios cualitativos y cuantitativos.
 
-Además de la presentación y conclusiones obtenidas con los distintos métodos, también se valorará que aparezca
+En este trabajo, se aborda un problema de decisión multicriterio aplicando varias técnicas vistas en clase: el Proceso de Análisis Jerárquico (AHP), el método Electre y el método Promethee, entre otros. Cada uno de estos métodos se emplea para estructurar, analizar y resolver el problema elegido, destacando sus enfoques, ventajas y limitaciones.
 
-la documentación utilizada así como material gráfico que mejore la comprensión del problema de decisión resuelto.
+El objetivo de este estudio es comparar cómo cada técnica proporciona insights y resultados en el proceso de decisión, y discutir la consistencia y viabilidad de las soluciones obtenidas. Además, se documentará la metodología y los pasos seguidos, complementando el análisis con gráficos y material visual que facilite la comprensión del proceso y los resultados.
 
-- La salida generada puede ser: pdf o html.
+Finalmente, se presentarán las conclusiones y observaciones obtenidas a partir de la aplicación de estas técnicas, resaltando las implicaciones prácticas y las posibles recomendaciones para futuros análisis de decisiones.
+
+## **Planteamiento del Problema: Elección de Plataforma de Streaming**
+
+En la actualidad, las plataformas de streaming son una de las principales formas de consumir contenido multimedia. Sin embargo, la gran cantidad de opciones disponibles genera un desafío para los usuarios a la hora de elegir cuál es la plataforma que mejor satisface sus necesidades. En este caso, vamos a analizar cuál es la mejor plataforma de streaming, entre tres opciones populares: **Netflix**, **Prime** y **Disney+**, según varios criterios de decisión.
+
+\newpage
+
+### **Criterios de Decisión**:
+
+Para resolver el problema, se han definido los siguientes criterios de decisión, basados en las características que los usuarios suelen considerar al elegir una plataforma de streaming:
+
+1.  **Precio**: El costo mensual de la suscripción a la plataforma.
+
+2.  **Variedad de Contenido**: La cantidad y diversidad de contenido disponible en la plataforma (películas, series, documentales, etc.).
+
+3.  **Calidad de Video**: La calidad de resolución de video disponible, como 4K, HDR, etc.
+
+4.  **Facilidad de Uso**: La interfaz de usuario y facilidad de navegación en la plataforma.
+
+5.  **Compatibilidad de Dispositivos**: La disponibilidad de la plataforma en diferentes dispositivos como Smart TVs, computadoras, teléfonos móviles, consolas de videojuegos, etc.
+
+6.  **Recomendaciones Personalizadas**: La calidad y precisión del sistema de recomendaciones de contenido que ofrece la plataforma.
+
+7.  **Exclusivos y Originales**: La presencia de contenido exclusivo o de producción propia que solo esté disponible en esa plataforma.
+
+### **Alternativas**:
+
+Las alternativas a evaluar son las siguientes plataformas de streaming:
+
+1.  **Netflix**
+
+2.  **Prime**
+
+3.  **Disney+**
+
+## **Valores Numéricos de los Criterios**
+
+Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es excelente.
+
+| **Criterio**                       | **Netflix** | **Prime** | **Disney+** |
+|------------------------------------|-------------|-----------|-------------|
+| **Precio (USD/mes)**               | 13          | 7         | 8           |
+| **Variedad de Contenido**          | 5           | 4         | 4           |
+| **Calidad de Video**               | 5           | 4         | 5           |
+| **Facilidad de Uso**               | 5           | 4         | 5           |
+| **Compatibilidad de Dispositivos** | 5           | 4         | 5           |
+| **Recomendaciones Personalizadas** | 5           | 3         | 4           |
+| **Exclusivos y Originales**        | 5           | 4         | 5           |
+
+\newpage
+
+## **Comparaciones por pares**
+
+### 1. **Precio**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 2     | 3       |
+| **Prime**   | 1/2     | 1     | 1/2     |
+| **Disney+** | 1/3     | 2     | 1       |
+
+### 2. **Variedad de Contenido**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 4     | 3       |
+| **Prime**   | 1/4     | 1     | 1/3     |
+| **Disney+** | 1/3     | 3     | 1       |
+
+### 3. **Calidad de Video**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 3     | 1       |
+| **Prime**   | 1/3     | 1     | 2       |
+| **Disney+** | 1       | 1/2   | 1       |
+
+### 4. **Facilidad de Uso**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 3     | 4       |
+| **Prime**   | 1/3     | 1     | 3       |
+| **Disney+** | 1/4     | 1/3   | 1       |
+
+### 5. **Compatibilidad de Dispositivos**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 2     | 3       |
+| **Prime**   | 1/2     | 1     | 1/2     |
+| **Disney+** | 1/3     | 2     | 1       |
+
+\newpage
+
+### 6. **Recomendaciones Personalizadas**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 2     | 2       |
+| **Prime**   | 1/2     | 1     | 1/2     |
+| **Disney+** | 1/2     | 2     | 1       |
+
+### 7. **Originales y Exclusivos**
+
+| Criterio    | Netflix | Prime | Disney+ |
+|-------------|---------|-------|---------|
+| **Netflix** | 1       | 2     | 3       |
+| **Prime**   | 1/2     | 1     | 1/3     |
+| **Disney+** | 1/3     | 3     | 1       |
+
+|     |
+|-----|
+|     |
+
+## **Aplicar el Proceso AHP (Analytic Hierarchy Process)**
+
+Pesos para cada uno de los criterios según su importancia relativa:
+
+-   **Precio**: 0.20
+
+-   **Variedad de Contenido**: 0.25
+
+-   **Calidad de Video**: 0.20
+
+-   **Facilidad de Uso**: 0.15
+
+-   **Compatibilidad de Dispositivos**: 0.10
+
+-   **Recomendaciones Personalizadas**: 0.05
+
+-   **Exclusivos y Originales**: 0.05
+
+```{r}
+
+library(ahp)
+#Paso 1. Cargar el modelo
+
+ahp_ej = ahp::Load("streaming_decision.ahp")
+ahp_ej
 
 
+#Paso 2. Calcular las prioridades
+Calculate(ahp_ej)
+print(ahp_ej, priority = function(x) x$parent$priority["Total", x$name])
 
-```{r pressure, echo=FALSE}
+#Paso 3. Visualizar la jerarquía
+Visualize(ahp_ej)
 
+#Paso 4
+Analyze(ahp_ej)
+
+#Paso 5. Analizar con Tabla Mejorada
+aa = AnalyzeTable(ahp_ej)
+formattable::as.htmlwidget(aa)
 ```
+
+### Análisis de Resultados
+
+**Plataforma Ganadora:**
+
+-   **Netflix** es la plataforma con la mayor prioridad (54.0%), lo que indica que, en general, es la opción más preferida en comparación con Disney+ (24.6%) y Prime (21.5%).
+
+**Inconsistencias:**
+
+-   Se observan inconsistencias importantes en varios criterios, especialmente en **Calidad de Video** (35.0%) y **Originales y Exclusivos** (24.5%). Esto sugiere que las comparaciones entre estas alternativas no son completamente consistentes y podrían necesitar una revisión para mejorar la coherencia.
+
+**Criterios más importantes:**
+
+-   **Precio** (18.5%) y **Calidad de Video** (18.3%) son los criterios más importantes en la elección de la plataforma de streaming.
+
+-   **Originales y Exclusivos** (17.7%) también es un criterio clave, seguido por **Variedad de Contenido** (12.2%) y **Facilidad de Uso** (10.3%).
+
+**Recomendaciones:**
+
+-   Es recomendable revisar las comparaciones de **Calidad de Video** y **Originales y Exclusivos** debido a las altas inconsistencias en estos criterios.
+
+-   **Netflix** tiene una ventaja significativa en la mayoría de los criterios, pero plataformas como **Disney+** son fuertes en contenido exclusivo y **Prime** destaca en otros aspectos como el precio.
