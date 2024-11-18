@@ -7,61 +7,63 @@ Goal:
   name: Elegir la mejor Plataforma de Streaming
   preferences:
     pairwise:
-      - [Precio, VariedadDeContenido, 3]
-      - [Precio, CalidadDeVideo, 1/3]
-      - [Precio, FacilidadDeUso, 5]
-      - [VariedadDeContenido, CalidadDeVideo, 2]
-      - [VariedadDeContenido, FacilidadDeUso, 1/2]
-      - [CalidadDeVideo, FacilidadDeUso, 3]
-      - [CompatibilidadDeDispositivos, RecomendacionesPersonalizadas, 2]
-      - [CompatibilidadDeDispositivos, OriginalesYExclusivos, 1/5]
+      - [Precio, VariedadDeContenido, 1]
+      - [Precio, CalidadDeVideo, 1]
+      - [Precio, FacilidadDeUso, 3/2]
+      - [VariedadDeContenido, CalidadDeVideo, 1]
+      - [VariedadDeContenido, FacilidadDeUso, 1]
+      - [CalidadDeVideo, FacilidadDeUso, 3/2]
+      - [CompatibilidadDeDispositivos, RecomendacionesPersonalizadas, 1]
+      - [CompatibilidadDeDispositivos, OriginalesYExclusivos, 1]
   children:
     Precio:
       preferences:
         pairwise:
-          - [Netflix,Prime,2]
-          - [Netflix,Disney+,3]
-          - [Prime,Disney+,1/2]
+          - [Netflix,Prime,3/2]
+          - [Netflix,Disney+,5/2]
+          - [Prime,Disney+,3/2]  
       children: *alternatives
     VariedadDeContenido:
       preferences:
         pairwise:
-          - [Netflix,Prime,4]
+          - [Netflix,Prime,3/2]  
           - [Netflix,Disney+,3]
-          - [Prime,Disney+,1/3]
+          - [Prime,Disney+,2]  
       children: *alternatives
     CalidadDeVideo:
       preferences:
         pairwise:
-          - [Netflix,Prime,3]
-          - [Netflix,Disney+,1]
+          - [Netflix,Prime,3/2]  
+          - [Netflix,Disney+,5/2]
           - [Prime,Disney+,2]
       children: *alternatives
     FacilidadDeUso:
       preferences:
         pairwise:
-          - [Netflix,Prime,3]          
-          - [Netflix,Disney+,4]        
-          - [Prime,Disney+,3]          
+          - [Netflix,Prime,3/2]
+          - [Netflix,Disney+,5/2]
+          - [Prime,Disney+,3/2]
       children: *alternatives
     CompatibilidadDeDispositivos:
       preferences:
         pairwise:
-          - [Netflix,Prime,2]
+          - [Netflix,Prime,3/2]
           - [Netflix,Disney+,3]
-          - [Prime,Disney+,1/2]
+          - [Prime,Disney+,2]  
       children: *alternatives
     RecomendacionesPersonalizadas:
       preferences:
         pairwise:
-          - [Netflix,Prime,2]          
-          - [Netflix,Disney+,2]        
-          - [Prime,Disney+,2]          
+          - [Netflix,Prime,3/2]
+          - [Netflix,Disney+,5/2]
+          - [Prime,Disney+,3/2]
       children: *alternatives
     OriginalesYExclusivos:
       preferences:
         pairwise:
           - [Netflix,Prime,2]
           - [Netflix,Disney+,3]
-          - [Prime,Disney+,1/3]
+          - [Prime,Disney+,3/2]  
       children: *alternatives
+
+

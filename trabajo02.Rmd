@@ -55,13 +55,13 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 
 | **Criterio**                       | **Netflix** | **Prime** | **Disney+** |
 |------------------------------------|-------------|-----------|-------------|
-| **Precio (USD/mes)**               | 13          | 7         | 8           |
+| **Precio (USD/mes)**               | 3           | 5         | 4           |
 | **Variedad de Contenido**          | 5           | 4         | 4           |
-| **Calidad de Video**               | 5           | 4         | 5           |
+| **Calidad de Video**               | 5           | 3         | 5           |
 | **Facilidad de Uso**               | 5           | 4         | 5           |
 | **Compatibilidad de Dispositivos** | 5           | 4         | 5           |
 | **Recomendaciones Personalizadas** | 5           | 3         | 4           |
-| **Exclusivos y Originales**        | 5           | 4         | 5           |
+| **Exclusivos y Originales**        | 5           | 3         | 4           |
 
 \newpage
 
@@ -71,41 +71,41 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
-| **Netflix** | 1       | 2     | 3       |
-| **Prime**   | 1/2     | 1     | 1/2     |
-| **Disney+** | 1/3     | 2     | 1       |
+| **Netflix** | 1       | 3/2   | 5/2     |
+| **Prime**   | 2/3     | 1     | 3/2     |
+| **Disney+** | 2/5     | 2/3   | 1       |
 
 ### 2. **Variedad de Contenido**
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
-| **Netflix** | 1       | 4     | 3       |
-| **Prime**   | 1/4     | 1     | 1/3     |
-| **Disney+** | 1/3     | 3     | 1       |
+| **Netflix** | 1       | 3/2   | 3       |
+| **Prime**   | 2/3     | 1     | 2       |
+| **Disney+** | 1/3     | 1/2   | 1       |
 
 ### 3. **Calidad de Video**
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
-| **Netflix** | 1       | 3     | 1       |
-| **Prime**   | 1/3     | 1     | 2       |
-| **Disney+** | 1       | 1/2   | 1       |
+| **Netflix** | 1       | 3/2   | 5/2     |
+| **Prime**   | 2/3     | 1     | 2       |
+| **Disney+** | 275     | 1/2   | 1       |
 
 ### 4. **Facilidad de Uso**
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
-| **Netflix** | 1       | 3     | 4       |
-| **Prime**   | 1/3     | 1     | 3       |
-| **Disney+** | 1/4     | 1/3   | 1       |
+| **Netflix** | 1       | 3/2   | 5/2     |
+| **Prime**   | 2/3     | 1     | 3/2     |
+| **Disney+** | 2/5     | 2/3   | 1       |
 
 ### 5. **Compatibilidad de Dispositivos**
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
-| **Netflix** | 1       | 2     | 3       |
-| **Prime**   | 1/2     | 1     | 1/2     |
-| **Disney+** | 1/3     | 2     | 1       |
+| **Netflix** | 1       | 3/2   | 3       |
+| **Prime**   | 2/3     | 1     | 2       |
+| **Disney+** | 1/3     | 1/2   | 1       |
 
 \newpage
 
@@ -113,39 +113,23 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
-| **Netflix** | 1       | 2     | 2       |
-| **Prime**   | 1/2     | 1     | 1/2     |
-| **Disney+** | 1/2     | 2     | 1       |
+| **Netflix** | 1       | 3/2   | 5/2     |
+| **Prime**   | 2/3     | 1     | 3/2     |
+| **Disney+** | 2/5     | 2/3   | 1       |
 
 ### 7. **Originales y Exclusivos**
 
 | Criterio    | Netflix | Prime | Disney+ |
 |-------------|---------|-------|---------|
 | **Netflix** | 1       | 2     | 3       |
-| **Prime**   | 1/2     | 1     | 1/3     |
-| **Disney+** | 1/3     | 3     | 1       |
+| **Prime**   | 1/2     | 1     | 3/2     |
+| **Disney+** | 1/3     | 2/3   | 1       |
 
 |     |
 |-----|
 |     |
 
 ## **Aplicar el Proceso AHP (Analytic Hierarchy Process)**
-
-Pesos para cada uno de los criterios según su importancia relativa:
-
--   **Precio**: 0.20
-
--   **Variedad de Contenido**: 0.25
-
--   **Calidad de Video**: 0.20
-
--   **Facilidad de Uso**: 0.15
-
--   **Compatibilidad de Dispositivos**: 0.10
-
--   **Recomendaciones Personalizadas**: 0.05
-
--   **Exclusivos y Originales**: 0.05
 
 ```{r}
 
@@ -171,24 +155,26 @@ aa = AnalyzeTable(ahp_ej)
 formattable::as.htmlwidget(aa)
 ```
 
-### Análisis de Resultados
+###  **Conclusión del análisis**
 
-**Plataforma Ganadora:**
+-   **Netflix** es la opción más equilibrada y preferida, destacándose principalmente en **variedad de contenido** y **facilidad de uso**, lo que la convierte en la opción más popular en general. Su alta puntuación en estos dos aspectos clave y su baja inconsistencia sugieren que los usuarios consideran a Netflix como la plataforma más completa y accesible.
 
--   **Netflix** es la plataforma con la mayor prioridad (54.0%), lo que indica que, en general, es la opción más preferida en comparación con Disney+ (24.6%) y Prime (21.5%).
+-   **Prime** se posiciona como una opción competitiva, especialmente para quienes priorizan el **precio**. Aunque no lidera en calidad de video o variedad de contenido, su **costo más bajo** la convierte en una excelente opción para aquellos con un presupuesto limitado.
 
-**Inconsistencias:**
+-   **Disney+**, aunque destaca en **calidad de video** y **contenido exclusivo**, no logra competir en términos de **variedad de contenido** y **facilidad de uso**, lo que puede ser una barrera para los usuarios que buscan una plataforma más versátil.
 
--   Se observan inconsistencias importantes en varios criterios, especialmente en **Calidad de Video** (35.0%) y **Originales y Exclusivos** (24.5%). Esto sugiere que las comparaciones entre estas alternativas no son completamente consistentes y podrían necesitar una revisión para mejorar la coherencia.
+En conclusión, **Netflix** sigue siendo la opción más completa y preferida por una amplia mayoría de los usuarios, mientras que **Prime** es ideal para los que buscan una opción económica, y **Disney+** es la mejor para los fanáticos de sus franquicias exclusivas y de alta calidad visual.
 
-**Criterios más importantes:**
+\newpage
 
--   **Precio** (18.5%) y **Calidad de Video** (18.3%) son los criterios más importantes en la elección de la plataforma de streaming.
+### **Resumen de Pesos Asignados:**
 
--   **Originales y Exclusivos** (17.7%) también es un criterio clave, seguido por **Variedad de Contenido** (12.2%) y **Facilidad de Uso** (10.3%).
-
-**Recomendaciones:**
-
--   Es recomendable revisar las comparaciones de **Calidad de Video** y **Originales y Exclusivos** debido a las altas inconsistencias en estos criterios.
-
--   **Netflix** tiene una ventaja significativa en la mayoría de los criterios, pero plataformas como **Disney+** son fuertes en contenido exclusivo y **Prime** destaca en otros aspectos como el precio.
+| **Criterio**                       | **Peso** |
+|------------------------------------|----------|
+| **Precio**                         | 20%      |
+| **Variedad de Contenido**          | 25%      |
+| **Calidad de Video**               | 20%      |
+| **Facilidad de Uso**               | 15%      |
+| **Compatibilidad de Dispositivos** | 10%      |
+| **Recomendaciones Personalizadas** | 5%       |
+| **Exclusivos y Originales**        | 5%       |
