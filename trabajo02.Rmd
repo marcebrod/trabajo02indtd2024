@@ -5,7 +5,17 @@ date: "2024-10-31"
 output: pdf_document
 ---
 
-# **Introducción**
+#  **ÍNDICE**
+## 1  **Introducción**
+## 2 **Planteamiento del Problema: Elección de Plataforma de Streaming**
+## 3  **Resolución con ayuda de las funciones R definidas en clase**
+##    3.1 **Método 1**
+##    3.2 **Método 2**
+## 4  **Con ayuda de las funciones R de clase (diagram)**
+## 5 **Uso del paquete AHP (Analytic Hierarchy Process)**
+
+
+# 1  **Introducción**
 
 La toma de decisiones en escenarios complejos donde intervienen múltiples criterios es un desafío común en muchas áreas, desde la gestión de proyectos hasta la selección de inversiones y la planificación estratégica. El análisis de decisión multicriterio (MCDM, por sus siglas en inglés) proporciona un marco robusto para abordar estos problemas, permitiendo evaluar y priorizar alternativas basadas en una variedad de criterios cualitativos y cuantitativos.
 
@@ -15,11 +25,11 @@ El objetivo de este estudio es comparar cómo cada técnica proporciona insights
 
 Finalmente, se presentarán las conclusiones y observaciones obtenidas a partir de la aplicación de estas técnicas, resaltando las implicaciones prácticas y las posibles recomendaciones para futuros análisis de decisiones.
 
-## **Planteamiento del Problema: Elección de Plataforma de Streaming**
+# 2 **Planteamiento del Problema:**
+#     **Elección de Plataforma de Streaming**
 
 En la actualidad, las plataformas de streaming son una de las principales formas de consumir contenido multimedia. Sin embargo, la gran cantidad de opciones disponibles genera un desafío para los usuarios a la hora de elegir cuál es la plataforma que mejor satisface sus necesidades. En este caso, vamos a analizar cuál es la mejor plataforma de streaming, entre tres opciones populares: **Netflix**, **Prime** y **Disney+**, según varios criterios de decisión.
 
-\newpage
 
 ### **Criterios de Decisión**:
 
@@ -51,6 +61,18 @@ Las alternativas a evaluar son las siguientes plataformas de streaming:
 
 ## **Valores Numéricos de los Criterios**
 
+| **Criterio**                       | **Precio**  |**Variedad** | **Calidad** | **Facilidad**  |**Compatibilidad** | **Recomendaciones** |**Originales** |
+|------------------------------------|-------------|-----------  |-------------|----------------|-------------------|---------------------|---------------|
+| **Precio (USD/mes)**               | 1           | 1/3         | 1/4         | 1/4            | 1/5               | 1/3                 |  1/5          |
+| **Variedad**                       | 3           | 1           | 2           | 2              | 1                 | 2                   |  1            |
+| **Calidad **                       | 4           | 1/2         | 1           | 2              | 2                 | 3                   |  2            |
+| **Facilidad**                      | 4           | 1/2         | 1/2         | 1              | 1                 | 2                   |  1            |
+| **Compatibilidad **                | 5           | 1           | 1/2         | 1              | 1                 | 2                   |  1/2          |
+| **Recomendaciones**                | 3           | 1/2         | 1/3         | 1/2            | 1/2               | 1                   |  1/2          |
+| **Originales**                     | 5           | 1           | 1/2         | 1              | 2                 | 2                   |  1            |
+
+
+
 Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es excelente.
 
 | **Criterio**                       | **Netflix** | **Prime** | **Disney+** |
@@ -62,8 +84,6 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 | **Compatibilidad de Dispositivos** | 5           | 4         | 5           |
 | **Recomendaciones Personalizadas** | 5           | 3         | 4           |
 | **Exclusivos y Originales**        | 5           | 3         | 4           |
-
-\newpage
 
 ## **Comparaciones por pares**
 
@@ -99,6 +119,7 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 | **Prime**   | 2/3     | 1     | 3/2     |
 | **Disney+** | 2/5     | 2/3   | 1       |
 
+
 ### 5. **Compatibilidad de Dispositivos**
 
 | Criterio    | Netflix | Prime | Disney+ |
@@ -107,7 +128,6 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 | **Prime**   | 2/3     | 1     | 2       |
 | **Disney+** | 1/3     | 1/2   | 1       |
 
-\newpage
 
 ### 6. **Recomendaciones Personalizadas**
 
@@ -129,7 +149,354 @@ Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es e
 |-----|
 |     |
 
-## **Aplicar el Proceso AHP (Analytic Hierarchy Process)**
+# **3  Resolución con ayuda de las funciones R definidas en clase**
+
+```{r echo=FALSE}
+source("teoriadecision_funciones_multicriterio_diagram.R")
+source("teoriadecision_funciones_multicriterio_utiles.R")
+source("teoriadecision_funciones_multicriterio.R")
+```
+
+Con ayuda de las funciones R de clase
+
+Se usan las funciones R en “teoriadecision_funciones_multicriterio.R”:
+
+• Método 1:
+
+– multicriterio.crea.matrizvaloraciones_mej()
+
+– multicriterio.metodoAHP.variante1.autovectormayorautovalor()
+
+– multicriterio.metodoAHP.pesosglobales_entabla()
+
+• Método 2:
+
+– multicriterio.crea.matrizvaloraciones_mej()
+
+– multicriterio.metodoAHP.variante3.completo()
+
+
+## **3.1 Método 1** 
+
+```{r echo=FALSE}
+
+# Vector de la diagonal superior
+vector_valores = c(
+  1/3, 1/4, 1/4, 1/5, 1/3, 1/5,  # Comparaciones de Precio
+  2,   2,   1,   2,   1,         # Comparaciones de Variedad
+  2,   2,   3,   2,              # Comparaciones de Calidad
+  1,   2,   1,                   # Comparaciones de Facilidad
+  2,   1/2,                      # Comparaciones de Compatibilidad
+  1/2                            # Comparaciones de Recomendaciones
+)
+
+
+matriz_criterios = multicriterio.crea.matrizvaloraciones_mej(
+  vector_valores,
+  numalternativas = 7,
+  v.nombres.alternativas = c("Precio", "Variedad", "Calidad", "Facilidad", 
+                             "Compatibilidad", "Recomendaciones", "Originales")
+)
+
+matriz_precio=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,3/2),
+    numalternativas = 3,v.nombres.alternativas =c("Netflix","Prime","Disney+"))
+
+
+matriz_variedad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,3,2),
+                numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+matriz_calidad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,2),
+               numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+matriz_facilidad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,3/2),
+                  numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+matriz_compatibilidad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,3,2),
+            numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+matriz_recomendaciones=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,3/2),
+                       numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+matriz_originales=multicriterio.crea.matrizvaloraciones_mej(c(2,3,3/2),
+           numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+```
+
+Calculamos los pesos locales:
+
+```{r echo=FALSE}
+pesos_mcriterios = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_criterios)
+
+pesos_mprecio = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_precio)
+
+pesos_mvariedad = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_variedad)
+
+pesos_mcalidad = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_calidad)
+
+pesos_mfacilidad = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_facilidad)
+
+pesos_mcompatibilidad = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_compatibilidad)
+
+pesos_mrecomendacionnes = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_recomendaciones)
+
+pesos_moriginales = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_originales)
+```
+
+
+Calculamos ahora los pesos globales:
+
+```{r}
+pesos=multicriterio.metodoAHP.pesosglobales_entabla(
+  pesos_mcriterios$valoraciones.ahp,rbind(
+  pesos_mprecio$valoraciones.ahp,pesos_mvariedad$valoraciones.ahp,
+  pesos_mcalidad$valoraciones.ahp,
+  pesos_mfacilidad$valoraciones.ahp,pesos_mcompatibilidad$valoraciones.ahp,
+  pesos_mrecomendacionnes$valoraciones.ahp,
+  pesos_moriginales$valoraciones.ahp))
+
+pesos
+
+```
+
+**MEJOR DECISIÓN :ALTERNATIVA A (NETFLIX) (peso global del 49.97%)**
+
+## **3.2 Método 2**
+
+Con la función: multicriterio.metodoAHP.variante3.completo()
+```{r}
+
+Xmat.precio=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,3/2),
+           numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+Xmat.variedad=multicriterio.crea.matrizvaloraciones(c(3/2,3,2),
+         numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+Xmat.calidad=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,2),
+        numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+Xmat.facilidad=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,3/2),
+         numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+Xmat.compatibilidad=multicriterio.crea.matrizvaloraciones(c(3/2,3,2),
+      numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+Xmat.recomendaciones=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,3/2),
+        numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+Xmat.originales=multicriterio.crea.matrizvaloraciones(c(2,3,3/2),
+           numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
+
+
+num.alt=3
+num.crit=7
+Xmatriznivel2=array(NA,dim=c(num.alt,num.alt,num.crit))
+Xmatriznivel2[,,1]=Xmat.precio
+Xmatriznivel2[,,2]=Xmat.variedad
+Xmatriznivel2[,,3]=Xmat.calidad
+Xmatriznivel2[,,4]=Xmat.facilidad
+Xmatriznivel2[,,5]=Xmat.compatibilidad
+Xmatriznivel2[,,6]=Xmat.recomendaciones
+Xmatriznivel2[,,7]=Xmat.originales
+
+pesoscomp=multicriterio.metodoAHP.variante3.completo(matriz_criterios,Xmatriznivel2)
+
+pesoscomp$pesos.globales_entabla
+
+
+```
+
+# **4 Con ayuda de las funciones R de clase (diagram)**
+Se usan las funciones R en “teoriadecision_funciones_multicriterio_diagram.R”:
+• Método 1 (diagram):
+– multicriterio.crea.matrizvaloraciones_mej()
+– multicriterio.metodoahp.diagrama()
+
+```{r}
+matriznivel=array(NA,dim=c(3,3,7))
+matriznivel[,,1]=matriz_precio
+matriznivel[,,2]=matriz_variedad
+matriznivel[,,3]=matriz_calidad
+matriznivel[,,4]=matriz_facilidad
+matriznivel[,,5]=matriz_compatibilidad
+matriznivel[,,6]=matriz_recomendaciones
+matriznivel[,,7]=matriz_originales
+
+dimnames(matriznivel)[[1]] = c("Netflix", "Prime", "Disney+")  
+dimnames(matriznivel)[[2]] = c("Netflix", "Prime", "Disney+")  
+dimnames(matriznivel)[[3]] = c("Precio", "Variedad", "Calidad",
+        "Facilidad", "Compatibilidad", "Recomendaciones", "Originales")  
+matriznivel
+
+multicriterio.metodoahp.diagrama(matriz_criterios,matriznivel)
+```
+
+**MEJOR DECISIÓN: ALTERNATIVA A (peso global del 49.97%)**
+
+
+# **5 Uso del paquete AHP (Analytic Hierarchy Process)**
+
+Se usan las funciones R:
+
+• Método ahp:
+
+– datos = Load(fichero_ahp)
+
+– Calculate(datos)
+
+– Visualize(datos)
+
+– AnalyzeTable(datos, variable = "priority") (pesos locales)
+
+– AnalyzeTable(datos) (contribuciones)
+
+Escribo el fichero “ahp24.ahp” con los datos.
+
+Version: 2.0
+
+Alternatives: &alternatives
+
+  Netflix:
+  
+  Prime:
+  
+  Disney+:
+  
+Goal:
+
+  name: Elegir la mejor Plataforma de Streaming
+  
+  preferences:
+  
+    pairwise:
+    
+      - [Precio, VariedadDeContenido, 1]
+      
+      - [Precio, CalidadDeVideo, 1]
+      
+      - [Precio, FacilidadDeUso, 3/2]
+      
+      - [VariedadDeContenido, CalidadDeVideo, 1]
+      
+      - [VariedadDeContenido, FacilidadDeUso, 1]
+      
+      - [CalidadDeVideo, FacilidadDeUso, 3/2]
+      
+      - [CompatibilidadDeDispositivos, RecomendacionesPersonalizadas, 1]
+      
+      - [CompatibilidadDeDispositivos, OriginalesYExclusivos, 1]
+      
+  children:
+  
+    Precio:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,3/2]
+          
+          - [Netflix,Disney+,5/2]
+          
+          - [Prime,Disney+,3/2]  
+          
+      children: *alternatives
+      
+    VariedadDeContenido:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,3/2]
+          
+          - [Netflix,Disney+,3]
+          
+          - [Prime,Disney+,2]  
+          
+      children: *alternatives
+      
+    CalidadDeVideo:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,3/2]  
+          
+          - [Netflix,Disney+,5/2]
+          
+          - [Prime,Disney+,2]
+          
+      children: *alternatives
+      
+    FacilidadDeUso:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,3/2]
+          
+          - [Netflix,Disney+,5/2]
+          
+          - [Prime,Disney+,3/2]
+          
+      children: *alternatives
+      
+    CompatibilidadDeDispositivos:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,3/2]
+          
+          - [Netflix,Disney+,3]
+          
+          - [Prime,Disney+,2]  
+          
+      children: *alternatives
+      
+    RecomendacionesPersonalizadas:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,3/2]
+          
+          - [Netflix,Disney+,5/2]
+          
+          - [Prime,Disney+,3/2]
+          
+      children: *alternatives
+      
+    OriginalesYExclusivos:
+    
+      preferences:
+      
+        pairwise:
+        
+          - [Netflix,Prime,2]
+          
+          - [Netflix,Disney+,3]
+          
+          - [Prime,Disney+,3/2] 
+          
+      children: *alternatives
+
+
 
 ```{r}
 
@@ -139,21 +506,28 @@ library(ahp)
 ahp_ej = ahp::Load("streaming_decision.ahp")
 ahp_ej
 
+```
 
+```{r}
 #Paso 2. Calcular las prioridades
 Calculate(ahp_ej)
 print(ahp_ej, priority = function(x) x$parent$priority["Total", x$name])
+```
 
+```{r}
 #Paso 3. Visualizar la jerarquía
 Visualize(ahp_ej)
+```
 
+```{r}
 #Paso 4
 Analyze(ahp_ej)
+```
 
+```{r}
 #Paso 5. Analizar con Tabla Mejorada
 aa = AnalyzeTable(ahp_ej)
 formattable::as.htmlwidget(aa)
-
 ```
 
 ### **Conclusión del análisis**
@@ -173,18 +547,6 @@ En conclusión, **Netflix** sigue siendo la opción más completa y preferida po
 A continuación se recogen imágenes que ilustran el uso de la aplicación Shiny que contiene la librería ahp\
 después de ejecutar la instrucción R:
 
-```{r}
-ahp::RunGUI()
-```
-
-![](images/Captura%20de%20pantalla%202024-11-18%20202113.png){width="430"}
-
-![](images/Captura%20de%20pantalla%202024-11-18%20202428.png){width="430"}
-
-![](images/Captura%20de%20pantalla%202024-11-18%20202615.png){width="526"}
-
-![](images/Captura%20de%20pantalla%202024-11-18%20202632.png){width="430"}
-
 ### **Resumen de Pesos Asignados:**
 
 | **Criterio**                       | **Peso** |
@@ -196,74 +558,3 @@ ahp::RunGUI()
 | **Compatibilidad de Dispositivos** | 10%      |
 | **Recomendaciones Personalizadas** | 5%       |
 | **Exclusivos y Originales**        | 5%       |
-
-### Resolución con ayuda de las funciones R definidas en clase
-
-```{r}
-source("teoriadecision_funciones_multicriterio.R")
-
-# Precio
-Xmatriz1 = multicriterio.crea.matrizvaloraciones(c(1,3/2,5/2,
-                                                   2/3,1,3/2,
-                                                   2/5,2/3,1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res1 = multicriterio.metodoAHP.variante3.basico(Xmatriz1)
-res1$valoraciones.ahp
-
-#VariedadDeContenido
-Xmatriz2 = multicriterio.crea.matrizvaloraciones(c(1,3/2,3,
-                                                   2/3,1,2,
-                                                   1/3,1/2,1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res2 = multicriterio.metodoAHP.variante3.basico(Xmatriz2)
-res2$valoraciones.ahp
-
-
-#CalidadDeVideo
-Xmatriz3 = multicriterio.crea.matrizvaloraciones(c(1, 3/2, 5/2, 
-                                                    2/3, 1, 2, 
-                                                    2/5, 1/2, 1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res3 = multicriterio.metodoAHP.variante3.basico(Xmatriz3)
-res3$valoraciones.ahp
-
-
-
-#FacilidadDeUso
-Xmatriz4 = multicriterio.crea.matrizvaloraciones(c(1, 3/2, 5/2, 
-                                                    2/3, 1, 3/2, 
-                                                    2/5, 2/3, 1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res4 = multicriterio.metodoAHP.variante3.basico(Xmatriz4)
-res4$valoraciones.ahp
-
-
-#CompatibilidadDeDispositivos
-Xmatriz5 = multicriterio.crea.matrizvaloraciones(c(1, 3/2, 3, 
-                                                    2/3, 1, 2, 
-                                                    1/3, 1/2, 1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res5 = multicriterio.metodoAHP.variante3.basico(Xmatriz5)
-res5$valoraciones.ahp
-
-
-#RecomendacionesPersonalizadas
-Xmatriz6 = multicriterio.crea.matrizvaloraciones(c(1, 3/2, 5/2, 
-                                                    2/3, 1, 3/2, 
-                                                    2/5, 2/3, 1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res6 = multicriterio.metodoAHP.variante3.basico(Xmatriz6)
-res6$valoraciones.ahp
-
-
-#ExclusivosYOriginales
-Xmatriz7 = multicriterio.crea.matrizvaloraciones(c(1, 2, 3, 
-                                                    1/2, 1, 3/2, 
-                                                    1/3, 2/3, 1),3,
-                                                 c("Netflix","Prime","Disney+"))
-res7 = multicriterio.metodoAHP.variante3.basico(Xmatriz7)
-res7$valoraciones.ahp
-
-
-
-```
