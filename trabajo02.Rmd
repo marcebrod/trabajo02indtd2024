@@ -2,17 +2,11 @@
 title: "trabajo02"
 author: "Magdalena Ceballos Rodríguez"
 date: "2024-10-31"
-output: pdf_document
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 5 
 ---
-
-#  **ÍNDICE**
-## 1  **Introducción**
-## 2 **Planteamiento del Problema: Elección de Plataforma de Streaming**
-## 3  **Resolución con ayuda de las funciones R definidas en clase**
-##    3.1 **Método 1**
-##    3.2 **Método 2**
-## 4  **Con ayuda de las funciones R de clase (diagram)**
-## 5 **Uso del paquete AHP (Analytic Hierarchy Process)**
 
 
 # 1  **Introducción**
@@ -31,7 +25,7 @@ Finalmente, se presentarán las conclusiones y observaciones obtenidas a partir 
 En la actualidad, las plataformas de streaming son una de las principales formas de consumir contenido multimedia. Sin embargo, la gran cantidad de opciones disponibles genera un desafío para los usuarios a la hora de elegir cuál es la plataforma que mejor satisface sus necesidades. En este caso, vamos a analizar cuál es la mejor plataforma de streaming, entre tres opciones populares: **Netflix**, **Prime** y **Disney+**, según varios criterios de decisión.
 
 
-### **Criterios de Decisión**:
+## **Criterios de Decisión**:
 
 Para resolver el problema, se han definido los siguientes criterios de decisión, basados en las características que los usuarios suelen considerar al elegir una plataforma de streaming:
 
@@ -49,7 +43,7 @@ Para resolver el problema, se han definido los siguientes criterios de decisión
 
 7.  **Exclusivos y Originales**: La presencia de contenido exclusivo o de producción propia que solo esté disponible en esa plataforma.
 
-### **Alternativas**:
+## **Alternativas**:
 
 Las alternativas a evaluar son las siguientes plataformas de streaming:
 
@@ -178,7 +172,7 @@ Se usan las funciones R en “teoriadecision_funciones_multicriterio.R”:
 
 ## **3.1 Método 1** 
 
-```{r echo=FALSE}
+```{r}
 
 # Vector de la diagonal superior
 vector_valores = c(
@@ -229,7 +223,7 @@ matriz_originales=multicriterio.crea.matrizvaloraciones_mej(c(2,3,3/2),
 
 Calculamos los pesos locales:
 
-```{r echo=FALSE}
+```{r }
 pesos_mcriterios = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_criterios)
 
 pesos_mprecio = multicriterio.metodoAHP.variante1.autovectormayorautovalor(matriz_precio)
@@ -316,11 +310,48 @@ pesoscomp$pesos.globales_entabla
 
 ```
 
+
+## **3.3 Estudio de la inconsistencia con funciones R de clase**
+
+```{r}
+Inconsistencia = multicriterio.metodoAHP.coef.inconsistencia(matriz_criterios)
+c(Inconsistencia$mensaje, round(Inconsistencia$RI.coef.inconsistencia,4) )
+
+InconsistenciaA = multicriterio.metodoAHP.coef.inconsistencia(matriz_precio)
+c(InconsistenciaA$mensaje, round(InconsistenciaA$RI.coef.inconsistencia,4) )
+
+InconsistenciaB = multicriterio.metodoAHP.coef.inconsistencia(matriz_variedad)
+c(InconsistenciaB$mensaje, round(InconsistenciaB$RI.coef.inconsistencia,4) )
+
+
+InconsistenciaC = multicriterio.metodoAHP.coef.inconsistencia(matriz_calidad)
+c(InconsistenciaC$mensaje, round(InconsistenciaA$RI.coef.inconsistencia,4) )
+
+
+InconsistenciaD = multicriterio.metodoAHP.coef.inconsistencia(matriz_facilidad)
+c(InconsistenciaD$mensaje, round(InconsistenciaD$RI.coef.inconsistencia,4) )
+
+
+InconsistenciaE = multicriterio.metodoAHP.coef.inconsistencia(matriz_compatibilidad)
+c(InconsistenciaE$mensaje, round(InconsistenciaE$RI.coef.inconsistencia,4) )
+
+InconsistenciaF = multicriterio.metodoAHP.coef.inconsistencia(matriz_recomendaciones)
+c(InconsistenciaF$mensaje, round(InconsistenciaF$RI.coef.inconsistencia,4) )
+
+
+InconsistenciaG = multicriterio.metodoAHP.coef.inconsistencia(matriz_originales)
+c(InconsistenciaG$mensaje, round(InconsistenciaG$RI.coef.inconsistencia,4) )
+```
+
 # **4 Con ayuda de las funciones R de clase (diagram)**
 Se usan las funciones R en “teoriadecision_funciones_multicriterio_diagram.R”:
+
 • Método 1 (diagram):
+
 – multicriterio.crea.matrizvaloraciones_mej()
+
 – multicriterio.metodoahp.diagrama()
+
 
 ```{r}
 matriznivel=array(NA,dim=c(3,3,7))
@@ -378,121 +409,121 @@ Goal:
   
   preferences:
   
-    pairwise:
+  pairwise:
     
-      - [Precio, VariedadDeContenido, 1]
+  - [Precio, VariedadDeContenido, 1]
       
-      - [Precio, CalidadDeVideo, 1]
+   - [Precio, CalidadDeVideo, 1]
       
-      - [Precio, FacilidadDeUso, 3/2]
+  - [Precio, FacilidadDeUso, 3/2]
       
-      - [VariedadDeContenido, CalidadDeVideo, 1]
+  - [VariedadDeContenido, CalidadDeVideo, 1]
       
-      - [VariedadDeContenido, FacilidadDeUso, 1]
+   - [VariedadDeContenido, FacilidadDeUso, 1]
       
-      - [CalidadDeVideo, FacilidadDeUso, 3/2]
+   - [CalidadDeVideo, FacilidadDeUso, 3/2]
       
-      - [CompatibilidadDeDispositivos, RecomendacionesPersonalizadas, 1]
+    - [CompatibilidadDeDispositivos, RecomendacionesPersonalizadas, 1]
       
-      - [CompatibilidadDeDispositivos, OriginalesYExclusivos, 1]
+    - [CompatibilidadDeDispositivos, OriginalesYExclusivos, 1]
       
   children:
   
-    Precio:
+  Precio:
     
-      preferences:
+   preferences:
       
-        pairwise:
+  pairwise:
         
-          - [Netflix,Prime,3/2]
+  - [Netflix,Prime,3/2]
           
-          - [Netflix,Disney+,5/2]
+  - [Netflix,Disney+,5/2]
           
-          - [Prime,Disney+,3/2]  
+    - [Prime,Disney+,3/2]  
           
       children: *alternatives
       
-    VariedadDeContenido:
+  VariedadDeContenido:
     
-      preferences:
+   preferences:
       
-        pairwise:
+   pairwise:
         
-          - [Netflix,Prime,3/2]
+   - [Netflix,Prime,3/2]
           
-          - [Netflix,Disney+,3]
+    - [Netflix,Disney+,3]
           
-          - [Prime,Disney+,2]  
+    - [Prime,Disney+,2]  
           
       children: *alternatives
       
-    CalidadDeVideo:
+  CalidadDeVideo:
     
-      preferences:
+  preferences:
       
-        pairwise:
+   pairwise:
         
-          - [Netflix,Prime,3/2]  
+   - [Netflix,Prime,3/2]  
           
-          - [Netflix,Disney+,5/2]
+    - [Netflix,Disney+,5/2]
           
-          - [Prime,Disney+,2]
+    - [Prime,Disney+,2]
           
       children: *alternatives
       
-    FacilidadDeUso:
+  FacilidadDeUso:
     
-      preferences:
+   preferences:
       
-        pairwise:
+   pairwise:
         
-          - [Netflix,Prime,3/2]
+  - [Netflix,Prime,3/2]
           
-          - [Netflix,Disney+,5/2]
+ - [Netflix,Disney+,5/2]
           
-          - [Prime,Disney+,3/2]
+  - [Prime,Disney+,3/2]
           
       children: *alternatives
       
-    CompatibilidadDeDispositivos:
+ CompatibilidadDeDispositivos:
     
-      preferences:
+  preferences:
       
-        pairwise:
+  pairwise:
         
-          - [Netflix,Prime,3/2]
+  - [Netflix,Prime,3/2]
           
-          - [Netflix,Disney+,3]
+  - [Netflix,Disney+,3]
           
-          - [Prime,Disney+,2]  
+   - [Prime,Disney+,2]  
           
       children: *alternatives
       
-    RecomendacionesPersonalizadas:
+  RecomendacionesPersonalizadas:
     
-      preferences:
+  preferences:
       
-        pairwise:
+   pairwise:
         
-          - [Netflix,Prime,3/2]
+  - [Netflix,Prime,3/2]
           
-          - [Netflix,Disney+,5/2]
+  - [Netflix,Disney+,5/2]
           
-          - [Prime,Disney+,3/2]
+  - [Prime,Disney+,3/2]
           
       children: *alternatives
       
-    OriginalesYExclusivos:
+  OriginalesYExclusivos:
     
-      preferences:
+   preferences:
       
-        pairwise:
+  pairwise:
         
-          - [Netflix,Prime,2]
+   - [Netflix,Prime,2]
           
-          - [Netflix,Disney+,3]
+    - [Netflix,Disney+,3]
           
-          - [Prime,Disney+,3/2] 
+    - [Prime,Disney+,3/2] 
           
       children: *alternatives
 
@@ -530,24 +561,17 @@ aa = AnalyzeTable(ahp_ej)
 formattable::as.htmlwidget(aa)
 ```
 
-### **Conclusión del análisis**
 
--   **Netflix** es la opción más equilibrada y preferida, destacándose principalmente en **variedad de contenido** y **facilidad de uso**, lo que la convierte en la opción más popular en general. Su alta puntuación en estos dos aspectos clave y su baja inconsistencia sugieren que los usuarios consideran a Netflix como la plataforma más completa y accesible.
-
--   **Prime** se posiciona como una opción competitiva, especialmente para quienes priorizan el **precio**. Aunque no lidera en calidad de video o variedad de contenido, su **costo más bajo** la convierte en una excelente opción para aquellos con un presupuesto limitado.
-
--   **Disney+**, aunque destaca en **calidad de video** y **contenido exclusivo**, no logra competir en términos de **variedad de contenido** y **facilidad de uso**, lo que puede ser una barrera para los usuarios que buscan una plataforma más versátil.
-
-En conclusión, **Netflix** sigue siendo la opción más completa y preferida por una amplia mayoría de los usuarios, mientras que **Prime** es ideal para los que buscan una opción económica, y **Disney+** es la mejor para los fanáticos de sus franquicias exclusivas y de alta calidad visual.
-
-\newpage
-
-### Aplicación Shiny de la librería ahp:
+## **Aplicación Shiny de la librería ahp:**
 
 A continuación se recogen imágenes que ilustran el uso de la aplicación Shiny que contiene la librería ahp\
 después de ejecutar la instrucción R:
 
-### **Resumen de Pesos Asignados:**
+
+# **6 Aplicacion método ELECTRE **
+
+
+## **Resumen de Pesos Asignados:**
 
 | **Criterio**                       | **Peso** |
 |------------------------------------|----------|
@@ -558,3 +582,39 @@ después de ejecutar la instrucción R:
 | **Compatibilidad de Dispositivos** | 10%      |
 | **Recomendaciones Personalizadas** | 5%       |
 | **Exclusivos y Originales**        | 5%       |
+
+```{r}
+matriz_decision=multicriterio.crea.matrizdecision(
+  c(3,5,5,5,5,5,5,5,4,3,4,4,3,3,4,4,5,5,5,4,4),numalternativas = 3,
+  numcriterios = 7,v.nombresalt = c("Netflix","Prime","Disney+"),
+  v.nombrescri = c("Precio", "Variedad", "Calidad","Facilidad", 
+"Compatibilidad", "Recomendaciones", "Originales"))
+matriz_decision
+
+
+```
+
+```{r}
+salida=multicriterio.metodoELECTRE_I(matriz_decision,pesos.criterios 
+=c(0.20,0.25,0.20,0.15,0.10,0.5,0.5),nivel.concordancia.minimo.alpha = 0.7,
+no.se.compensan = c(Inf,Inf,Inf,Inf,Inf,Inf,Inf),que.alternativas = TRUE)
+
+```
+
+```{r}
+qgraph::qgraph(salida$relacion.dominante)
+salida$nucleo_aprox
+r1=func_ELECTRE_Completo(salida)
+
+#r1$MIndices$KE %>% save_kable("test1.png")
+#include_graphics("test1.png")
+
+#r1$MConcordancia$KE %>% save_kable("test2.png")
+#include_graphics("test2.png")
+
+#r1$MDiscordancia$KE %>% save_kable("test3.png")
+#include_graphics("test3.png")
+
+#r1$MSuperacion$KE %>% save_kable("test4.png")
+#include_graphics("test4.png")
+```
