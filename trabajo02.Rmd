@@ -54,15 +54,15 @@ Las alternativas a evaluar son las siguientes plataformas de streaming:
 
 ## **Valores Numéricos de los Criterios**
 
-| **Criterio**         | **Precio** | **Variedad** | **Calidad** | **Facilidad** | **Compatibilidad** | **Recomendaciones** | **Originales** |
+| **Criterio**         | **Precio** | **Variedad** | **Calidad** | **Facilidad** | **Compat** | **Recomenda** | **Originales** |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-| **Precio (USD/mes)** | 1          | 1/3          | 1/4         | 1/4           | 1/5                | 1/3                 | 1/5            |
+| **Precio **          | 1          | 1/3          | 1/4         | 1/4           | 1/5                | 1/3                 | 1/5            |
 | **Variedad**         | 3          | 1            | 2           | 2             | 1                  | 2                   | 1              |
 | **Calidad**          | 4          | 1/2          | 1           | 2             | 2                  | 3                   | 2              |
 | **Facilidad**        | 4          | 1/2          | 1/2         | 1             | 1                  | 2                   | 1              |
-| **Compatibilidad**   | 5          | 1            | 1/2         | 1             | 1                  | 2                   | 1/2            |
-| **Recomendaciones**  | 3          | 1/2          | 1/3         | 1/2           | 1/2                | 1                   | 1/2            |
-| **Originales**       | 5          | 1            | 1/2         | 1             | 2                  | 2                   | 1              |
+| **Compat**           | 5          | 1            | 1/2         | 1             | 1                  | 2                   | 1/2            |
+| **Recomen**          | 3          | 1/2          | 1/3         | 1/2           | 1/2                | 1                   | 1/2            |
+| **Original**         | 5          | 1            | 1/2         | 1             | 2                  | 2                   | 1              |
 
 Para simplificar, utilizaremos una escala de 1 a 5, donde 1 es muy malo y 5 es excelente.
 
