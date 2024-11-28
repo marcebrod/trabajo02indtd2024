@@ -1,5 +1,5 @@
 ---
-title: "trabajo02"
+title: "Decisión multicriterio"
 author: "Magdalena Ceballos Rodríguez"
 date: "2024-10-31"
 output:
@@ -250,7 +250,7 @@ pesos
 
 ```
 
-**MEJOR DECISIÓN :ALTERNATIVA A (NETFLIX) (peso global del 49.97%)**
+**MEJOR DECISIÓN : ALTERNATIVA A (NETFLIX) (peso global del 49.97%)**
 
 ## **3.2 Método 2**
 
@@ -258,31 +258,31 @@ Con la función: multicriterio.metodoAHP.variante3.completo()
 
 ```{r}
 
-Xmat.precio=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,3/2),
+Xmat.precio=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,3/2),
            numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
-Xmat.variedad=multicriterio.crea.matrizvaloraciones(c(3/2,3,2),
+Xmat.variedad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,3,2),
          numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
-Xmat.calidad=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,2),
+Xmat.calidad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,2),
         numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
-Xmat.facilidad=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,3/2),
+Xmat.facilidad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,3/2),
          numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
-Xmat.compatibilidad=multicriterio.crea.matrizvaloraciones(c(3/2,3,2),
+Xmat.compatibilidad=multicriterio.crea.matrizvaloraciones_mej(c(3/2,3,2),
       numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
-Xmat.recomendaciones=multicriterio.crea.matrizvaloraciones(c(3/2,5/2,3/2),
+Xmat.recomendaciones=multicriterio.crea.matrizvaloraciones_mej(c(3/2,5/2,3/2),
         numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
-Xmat.originales=multicriterio.crea.matrizvaloraciones(c(2,3,3/2),
+Xmat.originales=multicriterio.crea.matrizvaloraciones_mej(c(2,3,3/2),
            numalternativas = 3,v.nombres.alternativas = c("Netflix","Prime","Disney+"))
 
 
@@ -303,6 +303,8 @@ pesoscomp$pesos.globales_entabla
 
 
 ```
+
+**MEJOR DECISIÓN : ALTERNATIVA A (NETFLIX) (peso global del 49.97%)**
 
 ## **3.3 Estudio de la inconsistencia con funciones R de clase**
 
